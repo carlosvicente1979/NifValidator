@@ -21,8 +21,12 @@ pipeline{
                 """
             }
         }
-
+        stage('Build'){
+            steps{
+                sh"""
+                docker build -t carlosvicente1979/nif-validator .
+                """
+            }
+        }
     }
-
-
 }
