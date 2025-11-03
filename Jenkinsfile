@@ -32,7 +32,7 @@ pipeline{
                 }
             }
             steps {
-                sh 'pytest --junitxml result.xml tests/'
+                sh 'pyhton3 -m pytest --junitxml result.xml tests/'
             }
             post {
                 always {
