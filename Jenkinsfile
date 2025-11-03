@@ -24,14 +24,7 @@ pipeline{
                 """
             }
         }
-        stage('Build'){
-            steps{
-                sh"""
-                docker build -t carlosvicente1979/nif-validator .
-                """
-            }
-        }
-        stage('Unit test') {
+         stage('Unit test') {
             agent {
                docker {
                     image 'python:3.11-slim'
@@ -50,6 +43,14 @@ pipeline{
                 }
             }
         }
+        stage('Build'){
+            steps{
+                sh"""
+                docker build -t carlosvicente1979/nif-validator .
+                """
+            }
+        }
+       
         stage('Deliver') {
             steps {
                 withCredentials([usernamePassword(
