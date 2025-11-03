@@ -37,7 +37,7 @@ pipeline{
                         sh"""
                         printenv
                         docker build -t ${username}/nif-validator .
-                        docker login -u ${username} -p ${passwd}
+                        docker login -u "${username}" -p "${passwd}"
                         docker push ${username}/nif-validator
                         """
                }
