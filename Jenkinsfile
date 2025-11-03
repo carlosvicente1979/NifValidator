@@ -28,5 +28,20 @@ pipeline{
                 """
             }
         }
+         stage('Deliver'){
+            steps{
+                withCredentials([usernamePassword(
+                    credentialsID: 'docker-id',
+                    passwordVariable: 'passwd', 
+                    usernameVariable: 'username')]){
+                        sh"""
+                        printenv
+                        docker build -t $(username)/nif-validator .
+                        docker login -u $(username) -p $(passwd)
+                        docker push $(usernae)
+                        """
+                    }
+            }
+        }
     }
 }
